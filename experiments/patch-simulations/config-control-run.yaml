@@ -1,0 +1,29 @@
+checkpoint_path: /best_inference_ckpt.tar
+data_writer:
+  save_monthly_files: true
+  save_prediction_files: false
+experiment_dir: /output_path
+forcing_loader:
+  dataset:
+    data_path: /forcing_data_path
+    engine: netcdf4
+    file_pattern: 1971.nc
+    n_repeats: 41
+  num_data_workers: 2
+forward_steps_in_memory: 100
+initial_condition:
+  engine: netcdf4
+  path: /initial_condition/1971010100.nc
+  start_indices:
+    first: 0
+    n_initial_conditions: 1
+logging:
+  log_to_file: true
+  log_to_screen: true
+  log_to_wandb: false
+  project: ace
+n_forward_steps: 58400
+stepper_override:
+  ocean:
+    ocean_fraction_name: OCNFRAC
+    surface_temperature_name: TS
